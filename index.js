@@ -6,7 +6,7 @@ var plugins = [
 	require('./src/font-family.js'),
 	require('./src/font-size.js'),
 	require('./src/font-style.js'),
-	// require('./src/font-weight.js'),
+	require('./src/font-weight.js'),
 	require('./src/line-height.js')
 ]
 

@@ -1,52 +1,112 @@
+const abstract = require('./abtract.js');
+const _ = require('underscore');
+const postcss = require('postcss');
 
-const fontWeight =
+/**
+ *  Font Weight parser
+ *
+ *  @author Alexandre Masy <hello@alexandremasy.com>
+ **/
+class fontWeight extends abstract
 {
   /**
-   *  Constructor
-   *
-   *  @param {Object} options
-   **/
-  constructor(options)
-  {
-    this._options = options;
-  },
-
-  /**
-   *  Set options
-   *
-   *  @param {Object} value
-   **/
-  set options(value)
-  {
-    this._options = value;
-  },
-
-  /**
-   *  Get the match value
+   *  The property
    *
    *  @return {String}
-   *  @return {RegExp}
    **/
-  match(value)
-  {
-    var r = new RegExp(`^(.*)\/(.*)$`)
-    var m = value.match(r);
-
-    return {
-      family: m[1],
-      weight: m[2]
-    }
-  },
+  get property() { return 'font-weight'; }
 
   /**
-   *  Declaration processor
+   *  The allowed values
    *
-   *  @param {Object} decl – A postcss declaration object
+   **/
+  get values() {
+    return {
+      "thin": 100,
+      "ultra-light": 200,
+      "light":300,
+      "normal": 400,
+      "semi-bold": 500,
+      "bold": 600,
+      "extra-bold": 700,
+      "black": 800
+    };
+  }
+
+  /**
+   *  Process the value to output the appropriate replacement
+   *
+   *  @param {String} decl
    **/
   process(decl)
   {
+    super.process(decl);
 
+    let value = decl.value;
+
+    // get the def
+    let family, weight;
+    if (value.indexOf('/') != -1)
+    {
+      let r = new RegExp(`^(.*)\/(.*)$`)
+      let m = value.match(r);
+
+      family = _.findWhere(this._options, {name:m[1]});
+      if (!family)
+      {
+        throw decl.error('Error: The given font definition name does not exists: ' + m[1], { word: m[1], plugin: 'postcss-salt-typography' });
+      }
+      weight = m[2];
+    }
+    else
+    {
+      // find the first family who has the given style
+      weight = value;
+
+      _.each(this._options, function(e)
+      {
+        _.each(e.typefaces, function(t)
+        {
+          if (t.indexOf(weight) != -1 && family == null)
+          {
+            family = e;
+          }
+        })
+      }, this);
+
+      if (family == null)
+      {
+        throw decl.error('Error: There are no font definition that has the given weight: ' + weight, { word: weight, plugin: 'postcss-salt-typography' });
+      }
+    }
+
+    // get the values
+    if (!this.values.hasOwnProperty(weight))
+    {
+      throw decl.error('Error: The given weight does not exists: ' + weight, { word: weight, plugin: 'postcss-salt-typography' });
+    }
+
+    weight = this.values[weight];
+
+    // apply the def to the template
+    return this.apply({family:family.family, weight});
+  }
+
+  /**
+   *  Apply the given values to a template
+   *
+   *  @param {Object} def
+   *  @return {Node}
+   **/
+  apply(def)
+  {
+    var tpl = `
+    font-family: ${def.family};
+    font-weight: ${def.weight};
+    `;
+
+    return postcss.parse(tpl);
   }
 }
 
-module.exports = fontWeight;
+module.exports = new fontWeight();

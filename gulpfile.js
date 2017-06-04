@@ -8,7 +8,7 @@ var rubik = {
   typefaces: [
     "normal default google",
     "bold google",
-    "black google"
+    "black italic google"
   ],
   sizes:{
     xxs:    [".512rem",  ".579rem"],
