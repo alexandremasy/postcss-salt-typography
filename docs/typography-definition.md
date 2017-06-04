@@ -1,4 +1,10 @@
-# Typography definition syntax
+# Typography definition
+
+
+
+
+
+## Syntax
 
 The font definition setting is used by [@font-face](font-face), [font-family](font-family), [font-size](font-size), [line-height](line-height) properties. Here is the formal syntax:
 
