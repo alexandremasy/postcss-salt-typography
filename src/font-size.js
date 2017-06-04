@@ -1,3 +1,4 @@
+const abstract = require('./abtract.js');
 const _ = require('underscore');
 const postcss = require('postcss');
 
@@ -6,7 +7,7 @@ const postcss = require('postcss');
  *
  *  @author Alexandre Masy <hello@alexandremasy.com>
  **/
-class fontSize
+class fontSize extends abstract
 {
   /**
    *  The property
@@ -16,24 +17,15 @@ class fontSize
   get property() { return 'font-size'; }
 
   /**
-   *  Set options
-   *
-   *  @param {Object} value
-   **/
-  set options(value) { this._options = value; }
-
-  /**
    *  Process the value to output the appropriate replacement
    *
    *  @param {String} decl
    **/
   process(decl)
   {
+    super.process(decl);
+
     let value = decl.value;
-    if (!this._options)
-    {
-      throw decl.error('Error: Please provide a configuration first ', { plugin: 'postcss-salt-typography' });
-    }
 
     // get the def
     let family, size;

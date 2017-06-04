@@ -1,51 +1,72 @@
+const abstract = require('./abtract.js');
+const _ = require('underscore');
+const postcss = require('postcss');
 
-const fontFamily =
+/**
+ *  Font Family parser
+ *
+ *  @author Alexandre Masy <hello@alexandremasy.com>
+ **/
+class fontFamily extends abstract
 {
   /**
-   *  Constructor
-   *
-   *  @param {Object} options
-   **/
-  constructor(options)
-  {
-    this._options = options;
-  },
-
-  /**
-   *  Set options
-   *
-   *  @param {Object} value
-   **/
-  set options(value)
-  {
-    this._options = value;
-  },
-
-  /**
-   *  Get the match value
+   *  The property
    *
    *  @return {String}
-   *  @return {RegExp}
    **/
-  match(value)
-  {
-    var r = new RegExp(`^(.*)$`)
-    var m = value.match(r);
-
-    return {
-      family: m[1]
-    }
-  },
+  get property() { return 'font-family'; }
 
   /**
-   *  Declaration processor
+   *  The allowed values
    *
-   *  @param {Object} decl – A postcss declaration object
+   **/
+  get values() {
+    return {
+      "thin": 100,
+      "ultra-light": 200,
+      "light":300,
+      "normal": 400,
+      "semi-bold": 500,
+      "bold": 600,
+      "extra-bold": 700,
+      "black": 800
+    };
+  }
+
+  /**
+   *  Process the value to output the appropriate replacement
+   *
+   *  @param {String} decl
    **/
   process(decl)
   {
+    super.process(decl);
 
+    let value = decl.value;
+
+    // get the def
+    let family;
+    family = _.findWhere(this._options, {name:value});
+
+    if (!family)
+    {
+      throw decl.error('Error: The given font definition name does not exists: ' + value, { word: value, plugin: 'postcss-salt-typography' });
+    }
+
+    // apply the def to the template
+    return this.apply({family:family.family});
+  }
+
+  /**
+   *  Apply the given values to a template
+   *
+   *  @param {Object} def
+   *  @return {Node}
+   **/
+  apply(def)
+  {
+    return postcss.decl({ prop: 'font-family', value: def.family });
   }
 }
 
-module.exports = fontFamily;
+module.exports = new fontFamily();

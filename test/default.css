@@ -25,11 +25,11 @@ html
 body
 {
   /* font: <name> <weight> <style> <size>:<line-height>*/
-  #font: heading regular xxs/m;
+  #font: body regular xxs/m;
   font: 16px;
 
   /* font-family: <name>; */
-  #font-family: heading;
+  #font-family: body;
 
   /* font-weight: <name>/<value> */
   #font-weight: regular;
