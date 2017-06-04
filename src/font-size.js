@@ -25,26 +25,41 @@ class fontSize
   /**
    *  Process the value to output the appropriate replacement
    *
-   *  @param {String} value
+   *  @param {String} decl
    **/
-  process(value)
+  process(decl)
   {
-    // get the def
-    let r = new RegExp(`^(.*)\/(.*)$`)
-    let m = value.match(r);
-
-    let family = m[1];
-    let size = m[2];
-
-    // get the values
-    let f = _.findWhere(this._options, {name:family});
-    if (f)
+    let value = decl.value;
+    if (!this._options)
     {
-      size = f.sizes[size];
+      throw decl.error('Error: Please provide a configuration first ', { plugin: 'postcss-salt-typography' });
     }
 
+    // get the def
+    let family, size;
+    if (value.indexOf('/') != -1)
+    {
+      let r = new RegExp(`^(.*)\/(.*)$`)
+      let m = value.match(r);
+
+      family = _.findWhere(this._options, {name:m[1]});
+      if (!family)
+      {
+        throw decl.error('Error: The given font definition name does not exists: ' + m[1], { word: m[1], plugin: 'postcss-salt-typography' });
+      }
+      size = m[2];
+    }
+    else
+    {
+      family = this._options[0];
+      size = value;
+    }
+
+    // get the values
+    size = family.sizes[size];
+
     // apply the def to the template
-    return this.apply({family, size});
+    return this.apply({family:family.name, size});
   }
 
   /**
@@ -67,8 +82,6 @@ class fontSize
     `;
 
     return postcss.parse(tpl);
-
-    // return postcss.decl({ prop: 'font-size', value: def.size });
   }
 }
 

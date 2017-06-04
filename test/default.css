@@ -21,3 +21,27 @@ html
 
   color: red;
 }
+
+body
+{
+  /* font: <name> <weight> <style> <size>:<line-height>*/
+  #font: heading regular xxs/m;
+  font: 16px;
+
+  /* font-family: <name>; */
+  #font-family: heading;
+
+  /* font-weight: <name>/<value> */
+  #font-weight: regular;
+
+  /* font-size: <name>/<value> */
+  #font-size: xxs;
+
+  /* line-height <name>/<value> */
+  #line-height: xxs;
+
+  /* font-style: <name>/<value> */
+  #font-style: italic;
+
+  color: red;
+}

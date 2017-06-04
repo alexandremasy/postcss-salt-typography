@@ -33,7 +33,7 @@ module.exports = postcss.plugin('postcss-salt-typography', (opts) => {
 		{
 			if (e.property == property)
 			{
-				decl.after(e.process(value));
+				decl.after(e.process(decl));
 			}
 		});
 
