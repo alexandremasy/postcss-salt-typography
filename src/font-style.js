@@ -2,25 +2,32 @@ const _ = require('underscore');
 const postcss = require('postcss');
 
 /**
- *  Font Size parser
+ *  Font Style parser
  *
  *  @author Alexandre Masy <hello@alexandremasy.com>
  **/
-class fontSize
+class fontStyle
 {
   /**
    *  The property
    *
    *  @return {String}
    **/
-  get property() { return 'font-size'; }
+  get property(){ return 'font-style' }
+
+  /**
+   *  Allowed values
+   *
+   *  @return {Array}
+   **/
+  get values() { return ['normal', 'italic', 'oblique'] }
 
   /**
    *  Set options
    *
    *  @param {Object} value
    **/
-  set options(value) { this._options = value; }
+  set options(value) { this._options = value }
 
   /**
    *  Process the value to output the appropriate replacement
@@ -30,11 +37,11 @@ class fontSize
   process(value)
   {
     // get the def
-    let r = new RegExp(`^(.*)\/(.*)$`)
+    let r = new RegExp(`^(.*)\/(.*)$`);
     let m = value.match(r);
 
     let family = m[1];
-    let size = m[2];
+    let style = m[2];
 
     // get the values
     let f = _.findWhere(this._options, {name:family});
@@ -44,7 +51,7 @@ class fontSize
     }
 
     // apply the def to the template
-    return this.apply({family, size});
+    return this.apply(def);
   }
 
   /**
@@ -56,13 +63,13 @@ class fontSize
   apply(def)
   {
     var tpl = `font-size: ${def.size}
-    @media(<xs)
-    {
-      font-size: ${def.size[0]};
-    }
     @media(>xs)
     {
-      font-size: ${def.size[1]};
+      font-size: ${def.size};
+    }
+    @media(<xs)
+    {
+      font-size: ${def.size};
     }
     `;
 
@@ -72,4 +79,4 @@ class fontSize
   }
 }
 
-module.exports = new fontSize();
+module.exports = new fontStyle();

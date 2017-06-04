@@ -2,42 +2,42 @@
 const postcss = require('postcss');
 
 // plugins
-const plugins = [
-	require('./src/font-size.js')
-];
-
-// properties
-const config = {};
-
+var plugins = [
+	// require('./src/font-family.js'),
+	require('./src/font-size.js'),
+	// require('./src/font-style.js'),
+	// require('./src/font-weight.js'),
+	// require('./src/line-height.js')
+]
 
 // plugin
 module.exports = postcss.plugin('postcss-salt-typography', (opts) => {
+
 	// options
-	const prefix = opts && 'prefix' in opts ? opts.prefix : '';
-	const skip = opts && 'skip' in opts ? opts.skip : '*';
+	const prefix = '#';
+
+	// @TODO merge a predefined set of default options with the one given by the user
+	// @TODO validate the user input
+	plugins.forEach((e) => {e.options = opts});
 
 	// property pattern
-	const propertyMatch = new RegExp(`^(font(?:-family|-weight|-size|-style)?|line-height)$`);
+	const propertyMatch = new RegExp(`^${ prefix }(font(?:-family|-weight|-size|-style)?|line-height)$`);
 
 	// process a matched declaration
 	const processMatchedDeclaration = (decl) =>
 	{
-		const property = decl.prop;
+		const property = decl.prop.match(propertyMatch)[1];
 		const value = decl.value;
 
-		switch (property)
+		plugins.forEach((e) =>
 		{
-			case 'font':
-				break;
+			if (e.property == property)
+			{
+				decl.after(e.process(value));
+			}
+		});
 
-			case 'font-family':
-				break;
-			default:
-
-		}
-
-		console.log('property', property);
-		console.log('value', value);
+		decl.remove();
 	}
 
 	return (css) => {

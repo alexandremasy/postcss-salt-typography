@@ -1,13 +1,23 @@
 html
 {
-  font: heading regular xxs/m primary01;
+  /* font: <name> <weight> <style> <size>:<line-height>*/
+  #font: heading regular xxs/m;
+  font: 16px;
 
-  font-family: heading;
-  font-weight: regular;
-  font-size: xxs;
-  line-height: xxs;
-  font-style: italic;
+  /* font-family: <name>; */
+  #font-family: heading;
 
-  
+  /* font-weight: <name>/<value> */
+  #font-weight: heading/regular;
+
+  /* font-size: <name>/<value> */
+  #font-size: heading/xxs;
+
+  /* line-height <name>/<value> */
+  #line-height: heading/xxs;
+
+  /* font-style: <name>/<value> */
+  #font-style: heading/italic;
+
   color: red;
 }
