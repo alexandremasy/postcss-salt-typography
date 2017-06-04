@@ -31,7 +31,7 @@ var rubik = {
 
 var helvetica = {
   name: "body",
-  family:  "Helvitca Neue",
+  family:  "Helvetica Neue",
   typefaces: [
     "normal default",
     "bold"
