@@ -7,7 +7,8 @@ var rubik = {
   family:  "Rubik",
   typefaces: [
     "normal default google",
-    "bold google"
+    "bold google",
+    "black google"
   ],
   sizes:{
     xxs:    [".512rem",  ".579rem"],
