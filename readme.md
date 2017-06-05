@@ -4,6 +4,17 @@
 
 
 
+## Functionalities
+
+1. **[Typography definition](#configuration)** Provide a way to declare the definition and relation of all the typographies used in an application.
+   ​
+2. **[Font importer](https://github.com/alexandremasy/postcss-salt-typography-font-face)** Import all the font available in the font definition. It handle properly diverse font provider `local`, `hosted`,  `Google`, `Typekit`.
+   ​
+3. **[Font parser](https://github.com/alexandremasy/postcss-salt-typography-parser)** Walk through you css declarations to find the dynamic font values and enforce a predefined one;
+   ​
+
+
+
 ## Getting started
 
 Installation is as easy as:
@@ -36,28 +47,11 @@ Include the plugin in your build process:
 
 This plugins depends on :
 
+- [PostCSS](https://github.com/postcss/postcss)
 - [Salt - Typography - Helper](https://github.com/alexandremasy/postcss-salt-typography-helper)
 - [Salt - Typography - Parser](https://github.com/alexandremasy/postcss-salt-typography-parser)
 - [Salt - Typography - Font-Face](https://github.com/alexandremasy/postcss-salt-typography-font-face)
-- [PostCSS](https://github.com/postcss/postcss)
 
-
-
-
-## Functionalities
-
-1.   **[Typography definition](#configuration)**
-
-  Provide a way to declare the definition and relation of all the typographies used in an application.
-  ​
-
-2. **[Font importer](https://github.com/alexandremasy/postcss-salt-typography-font-face)**
-   Import all the font available in the font definition. It handle properly diverse font provider `local`, `hosted`,  `Google`, `Typekit`.
-   ​
-
-3. **[Font parser](https://github.com/alexandremasy/postcss-salt-typography-parser)**
-
-   Walk through you css declarations to find the dynamic font values and enforce a predefined one;
 
 
 ## Configuration
@@ -93,7 +87,7 @@ where
 
 
 
-#### Typefaces definition
+### Typefaces definition
 
 The typefaces section contains the exhaustive definition of the fonts available in your project. It is a `Array` where each entry describe a particular variant of the same typeface. Here is the allowed keyword to define an entry:  
 
@@ -106,7 +100,7 @@ The typefaces section contains the exhaustive definition of the fonts available 
 
 
 
-##### Weight
+#### Weight
 
 Here is the list of allowed weight. Use the values listed bellow as a key in the `typefaces` definition. 
 
@@ -124,7 +118,7 @@ Here is the list of allowed weight. Use the values listed bellow as a key in the
 
 
 
-##### Style
+#### Style
 
 Here is the list of the allowed font-style. 
 
@@ -136,7 +130,7 @@ Here is the list of the allowed font-style.
 
 
 
-##### Font-providers
+#### Font-providers
 
 Here is the list of the supported font-provider. This functionnality is made available by the [@font-face](https://github.com/alexandremasy/postcss-salt-typography-font-face) postcss plugin.
 
@@ -149,7 +143,7 @@ Here is the list of the supported font-provider. This functionnality is made ava
 
 
 
-##### Font function
+#### Font function
 
 This function allows you to declare a local font set. The generated font-face will output an include for each  available font format (`eot`,`woff`, `woff2`, `ttf`, `svg`) 
 
@@ -166,12 +160,20 @@ font($font-family, $path, $filename, $format: $salt-typography-font-formats);
 
 
 
+------
+
+
+
 #### Sizes definition
 
 |          | Description                              |
 | -------- | ---------------------------------------- |
 | `scale`  | The scale for which the size is declared |
 | `length` | The font-size value for the given scale. If two css [length value](https://developer.mozilla.org/en-US/docs/Web/CSS/length) are provided then the first one is used as the minimum breakpoint's boundery (<=xxs) while the second one is used as the maximum breakpoint's boundery (>xxl). Everything in between is proportional. |
+
+
+
+------
 
 
 
