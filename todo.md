@@ -4,8 +4,9 @@
   - <https://github.com/GarthDB/postcss-inherit>
 
 ## functionalities
+  @TODO Write some documentation
 
-  1. font definition
+  1. font definition – OK
   Transpose the sass font definition to a json file in order to:
     - have it accessible in the postcss setup
     - have it accessible by third parties
@@ -14,16 +15,22 @@
   Generate the appropriate code for font inclusion for:
     - a local provider
     - a google font
+  @TODO Implement the font face local
+  @TODO Implement the font face google
   @see font-magician
 
   3. font parser
+  @TODO Write some tests
+  @TODO Implement the font shortcut
+  @TODO Add the responsive for the font-size
+
   html
   {
     font: heading regular xxs/m primary01;
 
-    font-family: <domain>;
-    font-weight: <weights...>;
-    font-size: <scale...>;
-    line-height: <scale...>;
-    font-style: italic | oblique | none;
+    font-family: <domain>; – OK
+    font-weight: <weights...>; - OK
+    font-size: <scale...>; - OK
+    line-height: <scale...>; - OK
+    font-style: italic | oblique | none; - OK
   }
