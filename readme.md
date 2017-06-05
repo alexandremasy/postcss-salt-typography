@@ -61,21 +61,26 @@ This plugins depends on :
 
 ### Syntax
 
-The font definition setting is used by *[@font-face](https://github.com/alexandremasy/postcss-salt-typography-font-face)*, *font-family*, *font-size*, *font-style*, *line-height* properties. Here is the formal syntax:
+The font definition setting is used by *[@font-face](https://github.com/alexandremasy/postcss-salt-typography-font-face)*, *[font-family](https://github.com/alexandremasy/postcss-salt-typography-parser#font-family)*, *[font-size](https://github.com/alexandremasy/postcss-salt-typography-parser#font-size)*, *[font-style](https://github.com/alexandremasy/postcss-salt-typography-parser#font-style)*, *[line-height](https://github.com/alexandremasy/postcss-salt-typography-parser#line-height)* properties. Here is the formal syntax:
 
 ```reStructuredText
 {
   name:         <string>,
   family:       <string>,
-  typefaces:    ([<weight> <style>? default? <provider>!]#),
-  sizes:        {[<scale>: <length> | <length> <length>]#},
-  line-height:  {[<scale>: <length> | <length> <length>]#}
+  typefaces:    [
+  	[<weight> <style>? default? <provider>!]#
+  ],
+  sizes:        {
+  	[<scale>: <length> | <length> <length>]#
+  },
+  line-height:  {
+  	[<scale>: <length> | <length> <length>]#
+  }
 };
 
 where
   weight =      thin | ultra-light | light | normal | medium | semi-bold | bold | extra-bold | black
-  provider =    <url> | google
-  scale =       xxs | xs | s | m | l | xl | xxl
+  provider =    <url> | local | google | typekit
 ```
 
 
