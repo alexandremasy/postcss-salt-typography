@@ -66,7 +66,7 @@ This plugins depends on :
 
 The font definition setting is used by *[@font-face](https://github.com/alexandremasy/postcss-salt-typography-font-face)*, *font-family*, *font-size*, *font-style*, *line-height* properties. Here is the formal syntax:
 
-```json
+```reStructuredText
 {
   name:         <string>,
   family:       <string>,
@@ -197,7 +197,7 @@ html{
 
 With this configuration:
 
-```json
+```javascript
 var helvetica = {
   name: "heading",
   family:  "Helvetica Neue",
