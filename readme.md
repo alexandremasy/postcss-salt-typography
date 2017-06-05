@@ -51,6 +51,9 @@ This plugins depends on :
 - [Salt - Typography - Helper](https://github.com/alexandremasy/postcss-salt-typography-helper)
 - [Salt - Typography - Parser](https://github.com/alexandremasy/postcss-salt-typography-parser)
 - [Salt - Typography - Font-Face](https://github.com/alexandremasy/postcss-salt-typography-font-face)
+- [Salt - Layout - Breakpoint](https://github.com/alexandremasy/postcss-salt-layout-breakpoint)
+
+
 
 
 
