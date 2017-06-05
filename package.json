@@ -1,32 +1,37 @@
 {
-  "name": "salt",
+  "name": "postcss-salt-typography",
   "version": "0.0.1",
   "description": "Add some flavor to your product design workflow",
-  "main": "gulpfile.js",
-  "dependencies": {
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^7.0.0",
-    "postcss": "^6.0.1",
-    "postcss-import": "^10.0.0",
-    "postcss-nested": "^2.0.2",
-    "postcss-tape": "^2.0.1",
-    "underscore": "^1.8.3"
-  },
-  "devDependencies": {},
+  "author": "Alexandre Masy",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/alexandremasy/postcss-salt.git"
   },
+  "homepage": "https://github.com/alexandremasy/postcss-salt-typography#readme",
+  "bugs": {
+    "url": "https://github.com/alexandremasy/postcss-salt-typography/issues"
+  },
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "postcss": "^6.0.1",
+    "postcss-import": "^10.0.0",
+    "postcss-nested": "^2.0.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-postcss": "^7.0.0",
+    "postcss-tape": "^2.0.1"
+  },
   "scripts": {
-     "test": "postcss-tape"
-   },
+    "css": "gulp css",
+    "test": "postcss-tape"
+  },
   "keywords": [
     "postcss"
-  ],
-  "author": "Alexandre Masy",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/alexandremasy/postcss-salt/issues"
-  },
-  "homepage": "https://github.com/alexandremasy/postcss-salt#readme"
+  ]
 }

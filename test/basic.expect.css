@@ -1,0 +1,73 @@
+html
+{
+  /* font: <name> <weight> <style> <size>:<line-height>*/
+  font: 16px;
+
+  /* font-family: <name>; */
+  font-family: Rubik;
+
+  /* font-weight: <name>/<value> */
+    font-family: Rubik;
+    font-weight: 400;
+
+  /* font-size: <name>/<value> */font-size: .512rem,.579rem
+    @media(<xs)
+    {
+      font-size: .512rem;
+    }@media(>xs)
+    {
+      font-size: .579rem;
+    }
+
+  /* line-height <name>/<value> */line-height: 1.2rem,1.2rem
+    @media(<xs)
+    {
+      line-height: 1.2rem;
+    }@media(>xs)
+    {
+      line-height: 1.2rem;
+    }
+
+  /* font-style: <name>/<value> */
+    font-family: Rubik;
+    font-style: italic;
+
+  color: red;
+}
+
+body
+{
+  /* font: <name> <weight> <style> <size>:<line-height>*/
+  font: 16px;
+
+  /* font-family: <name>; */
+  font-family: Helvetica Neue;
+
+  /* font-weight: <name>/<value> */
+    font-family: Rubik;
+    font-weight: 600;
+
+  /* font-size: <name>/<value> */font-size: .512rem,.579rem
+    @media(<xs)
+    {
+      font-size: .512rem;
+    }@media(>xs)
+    {
+      font-size: .579rem;
+    }
+
+  /* line-height <name>/<value> */line-height: 1.2rem,1.2rem
+    @media(<xs)
+    {
+      line-height: 1.2rem;
+    }@media(>xs)
+    {
+      line-height: 1.2rem;
+    }
+
+  /* font-style: <name>/<value> */
+    font-family: Rubik;
+    font-style: italic;
+
+  color: red;
+}

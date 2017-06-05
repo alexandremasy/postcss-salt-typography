@@ -10,6 +10,12 @@ var plugins = [
 	require('./src/line-height.js')
 ]
 
+// @TODO Implement the font shortcut
+// @TODO Implement the font face local
+// @TODO Implement the font face google
+// @TODO Add the responsive for the font-size
+
+
 // plugin
 module.exports = postcss.plugin('postcss-salt-typography', (opts) => {
 
