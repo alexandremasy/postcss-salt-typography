@@ -58,7 +58,7 @@ var helvetica = {
 var typography = [ rubik, helvetica ];
 
 module.exports = {
-  plugins: [
-    require('./index.js')(typography)
-  ]
+  plugins: {
+    'postcss-salt-typography-parser': typography
+  }
 }

@@ -18,9 +18,7 @@
   ],
   "dependencies": {
     "postcss": "^6.0.1",
-    "postcss-import": "^10.0.0",
-    "postcss-nested": "^2.0.2",
-    "underscore": "^1.8.3"
+    "postcss-salt-typography-parser": "git+ssh://git@github.com/alexandremasy/postcss-salt-typography-parser.git"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
