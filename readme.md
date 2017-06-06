@@ -8,7 +8,7 @@
 
 1. **[Typography definition](#configuration)** Provide a way to declare the definition and relation of all the typographies used in an application.
    ​
-2. **[Importer](https://github.com/alexandremasy/postcss-salt-typography-importer)** Import all the font available in the font definition. It handle properly diverse font provider `local`, `hosted`,  `Google`, `Typekit`.
+2. **[Importer](https://github.com/alexandremasy/postcss-salt-typography-importer)** Import all the font available in the font definition. It handle properly diverse font provider `local`, `hosted`,  `Google`.
    ​
 3. **[Parser](https://github.com/alexandremasy/postcss-salt-typography-parser)** Walk through you css declarations to find the dynamic font values and enforce a predefined one;
    ​
