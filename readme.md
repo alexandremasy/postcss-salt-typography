@@ -8,10 +8,11 @@
 
 1. **[Typography definition](#configuration)** Provide a way to declare the definition and relation of all the typographies used in an application.
    ​
-2. **[Font importer](https://github.com/alexandremasy/postcss-salt-typography-font-face)** Import all the font available in the font definition. It handle properly diverse font provider `local`, `hosted`,  `Google`, `Typekit`.
+2. **[Importer](https://github.com/alexandremasy/postcss-salt-typography-font-face)** Import all the font available in the font definition. It handle properly diverse font provider `local`, `hosted`,  `Google`, `Typekit`.
    ​
-3. **[Font parser](https://github.com/alexandremasy/postcss-salt-typography-parser)** Walk through you css declarations to find the dynamic font values and enforce a predefined one;
+3. **[Parser](https://github.com/alexandremasy/postcss-salt-typography-parser)** Walk through you css declarations to find the dynamic font values and enforce a predefined one;
    ​
+4. **[Default](https://github.com/alexandremasy/postcss-salt-typography-default)** Declare default typographics values for the body, html based on the typography definition. 
 
 
 
@@ -246,4 +247,3 @@ html{
   font-size: .64rem;
 }
 ```
-
